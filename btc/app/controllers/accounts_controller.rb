@@ -7,7 +7,6 @@ class AccountsController < ApplicationController
 	end
 
 	def get_balance
-		@balance = @account.current_balance.present? ? @account.current_balance : 0.0
 	end
 
 	def deposit_money
