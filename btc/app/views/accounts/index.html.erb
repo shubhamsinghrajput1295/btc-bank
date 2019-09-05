@@ -1,0 +1,3 @@
+<h2 class="text-center">Welcome <%= current_user.try(:first_name).to_s.capitalize %></h3>
+
+<h4>Account Number :<span class="badge"> <%=  @account.try(:account_number) %></span></h3>

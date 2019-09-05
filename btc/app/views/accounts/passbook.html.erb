@@ -1,0 +1,25 @@
+<h2>Statements</h2>           
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Transaction Type</th>
+        <th>Amount</th>
+        <th>Comment</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @transactions.present? %>
+        <% @transactions.each do |transaction|%>
+          <tr>
+            <td><%= transaction.account.try(:account_number)%></td>
+            <td><%= transaction.try(:transaction_type) %></td>
+            <td><%= transaction.try(:amount) %></td>
+            <td><%= transaction.try(:comment) %></td>
+            <td><%= transaction.try(:created_at) %></td>
+          </tr>
+        <% end %>
+      <% end %>    
+    </tbody>
+  </table>
