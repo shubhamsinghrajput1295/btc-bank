@@ -7,11 +7,13 @@ class Account < ApplicationRecord
   # callback method to run after account create
   def create_unique_account_number
     number = SecureRandom.alphanumeric
-    if number.present?
-      while Account.find_by(account_number: number)
-        number = SecureRandom.alphanumeric
-      end
+    while Account.find_by_account_number(number)
+      number = SecureRandom.alphanumeric
     end
     self.account_number = number
+  end
+
+  def check_amount(balance, withdraw_money)
+    balance.to_f >= withdraw_money.to_s.to_f ? true : false
   end
 end

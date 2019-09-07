@@ -3,14 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :accounts
+  has_one :account
   
   # active record callbacks
   after_create :open_user_account  
 
   # callback method to run after user create
   def open_user_account
-  	ac = self.accounts.new
-  	ac.save     	
+    Account.create(user_id: self.id)   	
   end     
 end

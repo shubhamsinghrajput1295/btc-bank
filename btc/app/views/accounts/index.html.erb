@@ -1,3 +1,6 @@
-<h2 class="text-center">Welcome <%= current_user.try(:first_name).to_s.capitalize %></h3>
+	<h2 class="text-center">Welcome <%= current_user.try(:first_name).to_s.capitalize %></h2>
 
-<h4>Account Number :<span class="badge"> <%=  @account.try(:account_number) %></span></h3>
+	<h4>Account Number : <%=  @account.try(:account_number) %></h4>
+	<h4>Name : <%= @account.user.try(:first_name) %> <%= @account.user.try(:last_name) %></h4>
+	<h4>Email : <%= @account.user.try(:email) %></h4>
+	<h4>Phone Number : <%= @account.user.try(:contact_number) %> </h4>
