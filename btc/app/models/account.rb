@@ -1,6 +1,6 @@
 class Account < ApplicationRecord
   belongs_to :user
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
   # active record callbacks
   before_create :create_unique_account_number
 
