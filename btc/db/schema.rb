@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2019_09_06_124401) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: :cascade do |t|
     t.string "account_number"
     t.float "current_balance", default: 0.0
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_124401) do
     t.string "transaction_type"
     t.float "amount", default: 0.0
     t.string "comment"
-    t.integer "account_id", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
